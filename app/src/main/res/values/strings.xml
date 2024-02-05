@@ -1,17 +1,36 @@
-
-
 <resources>
-    <string name="app_name">Superheroes</string>
-    <string name="hero1">Nick the Night and Day</string>
-    <string name="description1">The Jetpack Hero</string>
-    <string name="hero2">Reality Protector</string>
-    <string name="description2">Understands the absolute truth</string>
-    <string name="hero3">Andre the Giant</string>
-    <string name="description3">Mimics the light and night to blend in</string>
-    <string name="hero4">Benjamin the Brave</string>
-    <string name="description4">Harnesses the power of canary to develop bravely</string>
-    <string name="hero5">Magnificent Maru</string>
-    <string name="description5">Effortlessly glides in to save the day</string>
-    <string name="hero6">Dynamic Yasmine</string>
-    <string name="description6">Ability to shift to any form and energize</string>
+    <string name="app_name">10 DIAS </string>
+
+    <string name="day1">Día 1</string>
+    <string name="day2">Día 2</string>
+    <string name="day3">Día 3</string>
+    <string name="day4">Día 4</string>
+    <string name="day5">Día 5</string>
+    <string name="day6">Día 6</string>
+    <string name="day7">Día 7</string>
+    <string name="day8">Día 8</string>
+    <string name="day9">Día 9</string>
+    <string name="day10">Día 10</string>
+
+    <string name="short_description1">Levántate y brilla</string>
+    <string name="short_description2">Conquista tus miedos</string>
+    <string name="short_description3">Sé amable</string>
+    <string name="short_description4">Descubre nuevas habilidades</string>
+    <string name="short_description5">Mantén la calma</string>
+    <string name="short_description6">Haz una buena acción</string>
+    <string name="short_description7">Enfrenta tus metas</string>
+    <string name="short_description8">Agradece</string>
+    <string name="short_description9">Sé valiente</string>
+    <string name="short_description10">Celebra tus logros</string>
+
+    <string name="long_description1">Hoy es el primer día de tu viaje. Levántate temprano, enfrenta tus desafíos y brilla con todo tu potencial.</string>
+    <string name="long_description2">Enfrenta tus miedos hoy. Cada desafío superado es un paso más cerca de convertirte en un verdadero superhéroe.</string>
+    <string name="long_description3">La amabilidad tiene un poder increíble. Sé amable con los demás y descubre cómo tu bondad puede cambiar el mundo.</string>
+    <string name="long_description4">Hoy es el día para explorar nuevas habilidades. Descubre tu potencial y sorpréndete a ti mismo con lo que eres capaz de lograr.</string>
+    <string name="long_description5">En medio de los desafíos, recuerda mantener la calma. La verdadera fortaleza se encuentra en la paz interior.</string>
+    <string name="long_description6">Haz una buena acción hoy. Un pequeño acto de bondad puede tener un impacto duradero en la vida de alguien.</string>
+    <string name="long_description7">Define metas para ti mismo y trabaja incansablemente para alcanzarlas. Cada pequeño paso cuenta.</string>
+    <string name="long_description8">Hoy, toma un momento para agradecer. La gratitud transforma lo que tenemos en suficiente y más.</string>
+    <string name="long_description9">La valentía no siempre grita. A veces es la pequeña voz al final del día que dice mañana lo volveré a intentar.</string>
+    <string name="long_description10">¡Felicidades! Hoy es el día para celebrar tus logros, grandes o pequeños. Cada paso cuenta en tu viaje hacia la grandeza.</string>
 </resources>
