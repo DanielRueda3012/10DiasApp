@@ -15,11 +15,13 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -133,6 +135,7 @@ fun ImagenesListImtems(
         .size(dimensionResource(R.dimen.size50)) // Ajusta el tamaño del icono desplegable
         .padding(dimensionResource(R.dimen.padding_small))
         .clickable { isExpanded = !isExpanded }
+
     Card(
         elevation = CardDefaults.cardElevation(defaultElevation = 2.dp),
         modifier = modifier.background(backgroundColor)
@@ -152,17 +155,20 @@ fun ImagenesListImtems(
                 Text(
                     text = shortDescription,
                     style = MaterialTheme.typography.displaySmall,
-                    modifier = Modifier.weight(1f) // Ocupa todo el espacio restante
+                    modifier = Modifier.weight(1f)
+                )
+
+                // Espacio entre la frase y la imagen
+                Spacer(modifier = Modifier.width(dimensionResource(R.dimen.padding_small)))
+
+                // Botón de expansión
+                Icon(
+                    imageVector = Icons.Default.ArrowDropDown,
+                    contentDescription = null,
+                    tint = Color.White,
+                    modifier = iconModifier
                 )
             }
-
-            // Icono para indicar desplegable
-            Icon(
-                imageVector = Icons.Default.ArrowDropDown,
-                contentDescription = null,
-                tint = Color.White,
-                modifier = iconModifier
-            )
 
             // Imagen
             Box(
@@ -182,11 +188,13 @@ fun ImagenesListImtems(
                 )
             }
 
+
+            // Texto largo expandible
             if (isExpanded) {
                 Text(
                     text = longDescription,
                     style = MaterialTheme.typography.bodyMedium,
-                    modifier = Modifier.padding(dimensionResource(R.dimen.padding_medium))
+                    modifier = Modifier.padding(horizontal = dimensionResource(R.dimen.padding_medium))
                 )
             }
         }
