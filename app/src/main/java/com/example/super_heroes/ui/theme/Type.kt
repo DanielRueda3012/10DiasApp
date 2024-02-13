@@ -36,17 +36,18 @@ val Typography = Typography(
     bodyLarge = TextStyle(
         fontFamily = Permanent,
         fontWeight = FontWeight.Normal,
-        fontSize = 16.sp,
+        fontSize = 40.sp,
         lineHeight = 24.sp,
         letterSpacing = 0.5.sp
     ),
     bodyMedium = TextStyle(
         fontFamily = Unbounded,
         fontWeight = FontWeight.ExtraBold,
-        fontSize = 12.sp,
+        fontSize = 16.sp,
         lineHeight = 18.sp,
         letterSpacing = 0.5.sp
     ),
+
     displayLarge = TextStyle(
         fontFamily = Permanent,
         fontWeight = FontWeight.Normal,

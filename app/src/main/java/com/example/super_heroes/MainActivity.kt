@@ -7,7 +7,7 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Home
+import androidx.compose.material.icons.filled.ThumbUp
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -32,14 +32,14 @@ class MainActivity : ComponentActivity() {
     @OptIn(ExperimentalMaterial3Api::class)
     @Composable
     fun DiasApp() {
-        val heroes = ImagenesRepository.heroes
+        val imagenes = ImagenesRepository.heroes
         Scaffold(
             topBar = {
                 TopAppBar()
             },
             modifier = Modifier.fillMaxSize()
         ) {
-            ImagenesList(heroes = heroes, contentPadding = it)
+            ImagenesList(imagenes = imagenes, contentPadding = it)
         }
     }
 
@@ -60,10 +60,10 @@ class MainActivity : ComponentActivity() {
                     )
                     Spacer(modifier = Modifier.width(dimensionResource(R.dimen.padding_small)))
                     Icon(
-                        imageVector = Icons.Default.Home,
+                        imageVector = Icons.Default.ThumbUp,
                         contentDescription = null,
                         modifier = Modifier
-                            .clickable { /* Handle navigation icon click */ }
+                            .clickable {  }
                             .padding(dimensionResource(R.dimen.padding_small))
                     )
                 }

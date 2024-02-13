@@ -14,6 +14,7 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -49,7 +50,7 @@ import com.example.super_heroes.model.Imagenes
 
 @Composable
 fun ImagenesList(
-    heroes: List<Imagenes>,
+    imagenes: List<Imagenes>,
     modifier: Modifier = Modifier,
     contentPadding: PaddingValues = PaddingValues(0.dp),
 ) {
@@ -64,7 +65,7 @@ fun ImagenesList(
         modifier = modifier
     ) {
         LazyColumn(contentPadding = contentPadding) {
-            itemsIndexed(heroes) { index, hero ->
+            itemsIndexed(imagenes) { index, imagen ->
                 val day = (index + 1).toString() // day como contador
 
                 val shortDescription = when (index + 1) {
@@ -96,7 +97,7 @@ fun ImagenesList(
                 }
 
                 ImagenesListImtems(
-                    hero = hero,
+                    imagenes = imagen,
                     day = day,
                     shortDescription = shortDescription,
                     longDescription = longDescription,
@@ -108,10 +109,9 @@ fun ImagenesList(
 
     }
 }
-
 @Composable
 fun ImagenesListImtems(
-    hero: Imagenes,
+    imagenes: Imagenes,
     modifier: Modifier = Modifier,
     day: String,
     shortDescription: String,
@@ -138,21 +138,23 @@ fun ImagenesListImtems(
         modifier = modifier.background(backgroundColor)
     ) {
         Column(modifier = Modifier.fillMaxWidth()) {
-            // Día
-            Text(
-                text = day,
-                style = MaterialTheme.typography.bodyLarge,
-                modifier = Modifier.padding(dimensionResource(R.dimen.padding_medium))
-            )
+            // Día y primera frase en la misma línea
+            Row(
+                verticalAlignment = Alignment.CenterVertically,
+                modifier = Modifier.padding(horizontal = dimensionResource(R.dimen.padding_medium))
+            ) {
+                Text(
+                    text = day,
+                    style = MaterialTheme.typography.bodyLarge,
+                    modifier = Modifier.padding(end = dimensionResource(R.dimen.padding_small))
+                )
 
-            Text(
-                text = shortDescription,
-                style = MaterialTheme.typography.displaySmall,
-                modifier = Modifier
-                    .padding(horizontal = dimensionResource(R.dimen.padding_medium))
-                    .fillMaxWidth()
-                    .align(Alignment.CenterHorizontally)
-            )
+                Text(
+                    text = shortDescription,
+                    style = MaterialTheme.typography.displaySmall,
+                    modifier = Modifier.weight(1f) // Ocupa todo el espacio restante
+                )
+            }
 
             // Icono para indicar desplegable
             Icon(
@@ -172,7 +174,7 @@ fun ImagenesListImtems(
                     .graphicsLayer(scaleX = scale, scaleY = scale)
             ) {
                 Image(
-                    painter = painterResource(hero.imageRes),
+                    painter = painterResource(imagenes.imageRes),
                     contentDescription = null,
                     alignment = Alignment.Center,
                     contentScale = ContentScale.Crop,
@@ -190,3 +192,4 @@ fun ImagenesListImtems(
         }
     }
 }
+
