@@ -18,6 +18,9 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.super_heroes.model.ImagenesRepository
 import com.example.super_heroes.ui.theme.AppTheme
+import android.content.Intent
+import android.net.Uri
+import androidx.compose.ui.platform.LocalContext
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -46,6 +49,8 @@ class MainActivity : ComponentActivity() {
     @OptIn(ExperimentalMaterial3Api::class)
     @Composable
     fun TopAppBar() {
+        val context = LocalContext.current
+
         TopAppBar(
             title = {
                 Row(
@@ -63,7 +68,12 @@ class MainActivity : ComponentActivity() {
                         imageVector = Icons.Default.ThumbUp,
                         contentDescription = null,
                         modifier = Modifier
-                            .clickable {  }
+                            .clickable {
+                                val url = "https://github.com/DanielRueda3012/10DiasApp"
+                                val intent = Intent(Intent.ACTION_VIEW)
+                                intent.data = Uri.parse(url)
+                                context.startActivity(intent)
+                            }
                             .padding(dimensionResource(R.dimen.padding_small))
                     )
                 }
