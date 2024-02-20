@@ -187,8 +187,6 @@ fun ImagenesListImtems(
                     modifier = Modifier.fillMaxSize()
                 )
             }
-
-
             // Texto largo expandible
             if (isExpanded) {
                 Text(
