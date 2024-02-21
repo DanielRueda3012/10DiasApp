@@ -1,7 +1,6 @@
 package com.example.super_heroes
 
 import androidx.compose.animation.AnimatedVisibility
-import androidx.compose.animation.animateColorAsState
 import androidx.compose.animation.core.MutableTransitionState
 import androidx.compose.animation.core.Spring
 import androidx.compose.animation.core.animateFloatAsState
@@ -9,7 +8,6 @@ import androidx.compose.animation.core.spring
 import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -40,6 +38,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.draw.rotate
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.layout.ContentScale
@@ -48,7 +47,6 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.example.super_heroes.model.Imagenes
-
 
 @Composable
 fun ImagenesList(
@@ -104,13 +102,18 @@ fun ImagenesList(
                     shortDescription = shortDescription,
                     longDescription = longDescription,
                     modifier = Modifier
-                        .padding(horizontal = dimensionResource(R.dimen.padding_medium), vertical = dimensionResource(R.dimen.padding_small))
+                        .padding(
+                            horizontal = dimensionResource(R.dimen.padding_medium),
+                            vertical = dimensionResource(R.dimen.padding_small)
+                        )
                 )
             }
         }
 
     }
 }
+
+
 @Composable
 fun ImagenesListImtems(
     imagenes: Imagenes,
@@ -121,30 +124,40 @@ fun ImagenesListImtems(
 ) {
     var isExpanded by remember { mutableStateOf(false) }
 
-    val backgroundColor by animateColorAsState(
-        targetValue = if (isExpanded) Color.Transparent else Color.Transparent,
-        label = ""
+    val rotationAngle by animateFloatAsState(
+        targetValue = if (isExpanded) 360f else 0f,
+        animationSpec = spring(
+            dampingRatio = Spring.DampingRatioLowBouncy,
+            stiffness = Spring.StiffnessLow
+        ), label = ""
     )
 
     val scale by animateFloatAsState(
         targetValue = if (isExpanded) 1.2f else 1f,
-        animationSpec = spring(dampingRatio = Spring.DampingRatioHighBouncy), label = ""
+        animationSpec = spring(
+            dampingRatio = Spring.DampingRatioLowBouncy,
+            stiffness = Spring.StiffnessLow
+        ), label = ""
     )
 
     val iconModifier = Modifier
-        .size(dimensionResource(R.dimen.size50)) // Ajusta el tamaño del icono desplegable
-        .padding(dimensionResource(R.dimen.padding_small))
+        .size(50.dp)
+        .padding(8.dp)
         .clickable { isExpanded = !isExpanded }
 
     Card(
-        elevation = CardDefaults.cardElevation(defaultElevation = 2.dp),
-        modifier = modifier.background(backgroundColor)
+        elevation = CardDefaults.cardElevation(defaultElevation = 8.dp),
+        shape = RoundedCornerShape(dimensionResource(R.dimen.padding_medium)),
+        modifier = modifier
+            .rotate(rotationAngle)
+            .padding(dimensionResource(R.dimen.padding_medium))
     ) {
         Column(modifier = Modifier.fillMaxWidth()) {
-            // Día y primera frase en la misma línea
             Row(
                 verticalAlignment = Alignment.CenterVertically,
-                modifier = Modifier.padding(horizontal = dimensionResource(R.dimen.padding_medium))
+                modifier = Modifier
+                    .padding(horizontal = dimensionResource(R.dimen.padding_medium))
+                    .fillMaxSize()
             ) {
                 Text(
                     text = day,
@@ -158,10 +171,8 @@ fun ImagenesListImtems(
                     modifier = Modifier.weight(1f)
                 )
 
-                // Espacio entre la frase y la imagen
                 Spacer(modifier = Modifier.width(dimensionResource(R.dimen.padding_small)))
 
-                // Botón de expansión
                 Icon(
                     imageVector = Icons.Default.ArrowDropDown,
                     contentDescription = null,
@@ -170,13 +181,12 @@ fun ImagenesListImtems(
                 )
             }
 
-            // Imagen
             Box(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .height(dimensionResource(R.dimen.size200))
-                    .clip(RoundedCornerShape(dimensionResource(R.dimen.padding_small)))
-                    .clickable { isExpanded = !isExpanded } // Toggle isExpanded state
+                    .height(200.dp)
+                    .clip(RoundedCornerShape(8.dp))
+                    .clickable { isExpanded = !isExpanded }
                     .graphicsLayer(scaleX = scale, scaleY = scale)
             ) {
                 Image(
@@ -187,7 +197,7 @@ fun ImagenesListImtems(
                     modifier = Modifier.fillMaxSize()
                 )
             }
-            // Texto largo expandible
+
             if (isExpanded) {
                 Text(
                     text = longDescription,
